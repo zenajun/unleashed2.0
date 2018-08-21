@@ -6,14 +6,9 @@ import Header from './components/Header';
 import Footer from './components/Footer';
 import Map from './components/Map';
 
-
-
-
 // Initialize Firebase
 
 const apiKey = process.env.REACT_APP_FIREBASE_API_KEY;
-
-
 
 const config = {
   apiKey: `${apiKey}`,
@@ -27,7 +22,7 @@ firebase.initializeApp(config);
 
 class App extends Component {
   state = {
-    parkType: "allView",
+    parkType: "viewAll",
     customFilter: {
       allFen: false,
       allCdw: false,
@@ -70,8 +65,7 @@ class App extends Component {
     
     dbRef.on('value', (snapshot) => {
       const dogParks = snapshot.val();
-      console.log(dogParks);
-      
+      // console.log(dogParks);      
     });
   }
 
@@ -81,20 +75,13 @@ class App extends Component {
   
   updateForm = (parkOption) => {
     // 1. Take a copy of the existing state
-    const parkType = this.state.parkType;   
+    let parkType = this.state.parkType;   
 
     // 2. Add coordinates to usersLocation
-
+    parkType = parkOption;
+    
     // 3. Set new object to state
-
-    console.log(parkType);
-           
-
-    // this.state.parkType = parkType;
-
-    // this.setState({
-    //   parkType: parkOption
-    // });
+    this.setState({ parkType });
   }   
     
   componentDidMount() {
@@ -107,7 +94,7 @@ class App extends Component {
       <div className="App">
         <Header tagline="Find the off-leash dog parks of Toronto today!"/>
         <Form updateForm={this.updateForm} />        
-        <Map center={this.state.geoLocation} />
+        <Map center={this.state.usersLocation} />
         <Footer />        
       </div>
     );
