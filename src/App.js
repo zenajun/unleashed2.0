@@ -94,7 +94,7 @@ class App extends Component {
       <div className="App">
         <Header tagline="Find the off-leash dog parks of Toronto today!"/>
         <Form updateForm={this.updateForm} />        
-        <Map center={this.state.usersLocation} />
+        <Map />
         <Footer />        
       </div>
     );
