@@ -3,8 +3,6 @@ import DogMap from "./DogMap";
 
 const apiKey = process.env.REACT_APP_GOOGLE_MAPS_API_KEY;
 
-
-
 class DogMapContainer extends React.Component {
 
   render() {
@@ -19,4 +17,5 @@ class DogMapContainer extends React.Component {
     );
   }
 }
+
 export default DogMapContainer;
