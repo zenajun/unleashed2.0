@@ -1,27 +1,33 @@
-import React from 'react';
-import { Component } from 'react';
-import GoogleMapReact from 'google-map-react';
+import React, { Component } from 'react';
+import styled from 'styled-components';
+import DogMapContainer from "./DogMapContainer";
 
-class Map extends Component {
-  static defaultProps = {
-    center: {
-      lat:43.6707,
-      lng: -79.4141
-    },
-    zoom: 12  
-  };
+const MapContainer = styled.div`  
+  ${'' /* border: 4px solid black; */}
+  margin: 15px auto;  
 
-  render() {    
+  & ul {
+    list-style: none;
+    display: flex;
+    ${'' /* flex-direction: column; */}
+    flex-wrap: wrap;
+    
+    & li {
+      font-size: 1.6rem;
+      border: 1px solid grey;
+    }
+  }
+
+`;
+
+class Map extends Component { 
+  render() {      
     return (
-      <div className="map-container" style={{ height: '100vh', width: '100%' }}>
-        <GoogleMapReact
-          bootstrapURLKeys={{ key: 'AIzaSyCDY4rM7wJyPImzmpVBD2mrtH5tnolGEBo' }}
-          defaultCenter={this.props.center}
-          defaultZoom={this.props.zoom}         
-        >  
-
-        </GoogleMapReact>
-      </div>
+      <MapContainer>
+        <DogMapContainer 
+          user={this.props.user} 
+        />
+      </MapContainer>
     )
   }
 }
