@@ -4,7 +4,7 @@ import DogMapContainer from "./DogMapContainer";
 
 const MapContainer = styled.div`  
   ${'' /* border: 4px solid black; */}
-  margin: 15px auto;  
+  /* margin: 15px auto;   */
 
   & ul {
     list-style: none;
@@ -20,12 +20,12 @@ const MapContainer = styled.div`
 
 `;
 
-class Map extends Component { 
-  render() {      
+class Map extends Component {
+  render() {
     return (
       <MapContainer>
-        <DogMapContainer 
-          user={this.props.user} 
+        <DogMapContainer
+          user={this.props.user}
         />
       </MapContainer>
     )

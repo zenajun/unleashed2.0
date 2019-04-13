@@ -9,7 +9,7 @@ class App extends Component {
     return (
       <React.Fragment>     
         <Header 
-          h1={'Toronto Unleashed'} tagline={'Welcome to the park'}/>
+          h1={'Toronto Unleashed'} tagline={'🐕 Welcome to the park 🐕'}/>
        <Main />
        <Footer />
       </React.Fragment>

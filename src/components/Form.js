@@ -2,90 +2,89 @@ import React from 'react';
 import styled from 'styled-components';
 
 class Form extends React.Component {
-  customRadio = React.createRef();
-  subForm = React.createRef();
-
-
-  handleSubForm = (e) => {
-
-
-    const customRadio = this.customRadio.current.checked;
-    const checkboxes = [...this.subForm.current.children].filter(checkbox => {
-      return checkbox.type === 'checkbox';
-    });
-    if (customRadio === true) {
-      checkboxes.map(checkbox => {
-        return checkbox.disabled = false;
-      })
-    } else {
-      checkboxes.map(checkbox => {
-        return checkbox.disabled = true;
-      })
-    }
-
-    console.dir(checkboxes)
-  }
 
   render() {
-
-
     return (
       <Container>
-        <input type='radio' id='allParks' name='parkType' onChange={this.props.handleRadio} value={false} />
-        <label htmlFor='allParks'>All Parks</label>
+        <div className='category'>
+          <h3>Fence</h3>
+          <input type='radio' id='fenNull' name='fen' value='undefined' onChange={this.props.handleRadio} defaultChecked />
+          <label htmlFor='fenNull'>Doesn't Matter</label>
 
-        <input type='radio' id='allFen' name="parkType" onChange={this.props.handleRadio} value={false} />
-        <label htmlFor='allFen'>All Fenced</label>
+          <input type='radio' id='fenTrue' name='fen' value='true' onChange={this.props.handleRadio} />
+          <label htmlFor='fenTrue'>Fenced</label>
 
-        <input type='radio' id='allSda' name="parkType" onChange={this.props.handleRadio} value={false} />
-        <label htmlFor='allSda'>All Small dog parks</label>
+          <input type='radio' id='fenFalse' name='fen' value='false' onChange={this.props.handleRadio} />
+          <label htmlFor='fenFalse'>Not Fenced</label>
 
-        <input type='radio' id='allCdw' name="parkType" onChange={this.props.handleRadio} value={false} />
-        <label htmlFor='allCdw'>All Commercial Dog Walkers</label><br />
+        </div>
+        <div className='category'>
+          <h3 title="For dogs weighing a maximum 20 lbs, with a maximum height of 12 inches at the shoulders">Small Dog Area</h3>
+          <input type='radio' id='sdaNull' name='sda' value='undefined' onChange={this.props.handleRadio} defaultChecked />
+          <label htmlFor='sdaNull'>Doesn't Matter</label>
 
-        <input
-          type='radio'
-          id='custom'
-          name='parkType'
-          value={false}
-          ref={this.customRadio}
-          onChange={this.props.handleRadio}
-          onClick={this.handleSubForm} />
-        <label htmlFor='custom'>Custom Selection</label>
+          <input type='radio' id='sdaTrue' name='sda' value='true' onChange={this.props.handleRadio} />
+          <label htmlFor='sdaTrue'>Small Dog Area</label>
 
-        <div
-          className="subForm"
-          ref={this.subForm}
-        >
-          <input type="checkbox" id="fen" onChange={this.props.handleCheckbox} value={this.props.fen} />
-          <label htmlFor="fen">Fenced</label>
+          <input type='radio' id='sdaFalse' name='sda' value='false' onChange={this.props.handleRadio} />
+          <label htmlFor='sdaFalse'>No Small Dog Area</label>
 
-          <input type="checkbox" id="sda" onChange={this.props.handleCheckbox} value={this.props.sda} />
-          <label htmlFor="sda">Small Dog Area</label>
+        </div>
+        <div className='category'>
+          <h3>Commercial Dog Walkers</h3>
+          <input type='radio' id='cdwNull' name='cdw' value='undefined' onChange={this.props.handleRadio} defaultChecked />
+          <label htmlFor='cdwNull'>Doesn't Matter</label>
 
-          <input type="checkbox" id="cdw" onChange={this.props.handleCheckbox} value={this.props.cdw} />
-          <label htmlFor="cdw">Commercial Dog Walkers</label>
+          <input type='radio' id='cdwTrue' name='cdw' value='true' onChange={this.props.handleRadio} />
+          <label htmlFor='cdwTrue'>Allowed</label>
+
+          <input type='radio' id='cdwFalse' name='cdw' value='false' onChange={this.props.handleRadio} />
+          <label htmlFor='cdwFalse'>Not Allowed</label>
         </div>
       </Container>
-
     )
   }
 }
 
 const Container = styled.form`
-  font-size: 2rem;
-  padding: 25px;
+  font-size: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+    & .category {  
+      /* padding-right: 14px;
+      padding-left: 4px; */
+      /* border: 1px solid red; */
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: calc(100% / 3);
+    }
+  }
+  & h3 {
+    text-transform: uppercase;
+    font-size: 1.2rem;
+    margin: 0;
+    min-height: 30px;
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    text-shadow: 1px 1px 1px white;
+  }
     & label {
-      border: 3px solid transparent;   
-      border-radius: 33px;   
-      display: inline-block;
-      padding: 5px 10px;
+      height: 30px;
+      width: 80%;
+      border: 3px solid transparent;         
+      display: flex;
+      justify-content: center;
+      align-items: center;      
+      padding: 15px 0;
       background: #a9cbb7;
-      box-shadow: 0px 4px rgba(0, 0, 0, 0.2);
-      margin-bottom: 10px;
-      margin-right: 10px;
-      position: relative;
+      box-shadow: 0 4px rgba(0, 0, 0, 0.2);
+      position: relative;      
+      text-align: center;
       transition: 0.5s;
+      margin-bottom: 10px;
     }
     & input {
       margin-right: 15px;
@@ -98,21 +97,11 @@ const Container = styled.form`
     }
 
     & input:checked + label {
+      background: #91ad9c;
       box-shadow: 0px 0px rgba(0, 0, 0, 0.2);
       top: 4px;
+      /* left: 4px; */
       border-color: black;
-    }
-    
-    & #custom:not(:checked) ~ .subForm {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
-    & #custom:checked ~ .subForm {
-      opacity: 1;   
-    }
-    & .subForm {
-      margin-top: 15px;
     }
   }`;
 

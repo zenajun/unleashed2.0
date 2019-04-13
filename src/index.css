@@ -10,14 +10,17 @@ html {
 
 body {
   font-family: 'Nunito', sans-serif;
+  /* min-width: 305px; */
 }
+
 .wrapper {
-  width: 80%;
+  /* width: 80%; */
+  padding: 0 10px;
   margin: 0 auto;
   max-width: 1200px;
 }
 
-p {
+main p {
   margin: 0;
   font-size: 1.6rem;
 }
