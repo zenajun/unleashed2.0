@@ -14,7 +14,7 @@ const MapContainer = styled.div`
     
     & li {
       font-size: 1.6rem;
-      border: 1px solid grey;
+      /* border: 1px solid grey; */
     }
   }
 

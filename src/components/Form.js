@@ -50,10 +50,7 @@ const Container = styled.form`
   font-size: 1.2rem;
   display: flex;
   justify-content: space-between;
-    & .category {  
-      /* padding-right: 14px;
-      padding-left: 4px; */
-      /* border: 1px solid red; */
+    & .category {        
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -72,19 +69,20 @@ const Container = styled.form`
     text-shadow: 1px 1px 1px white;
   }
     & label {
-      height: 30px;
+      height: 35px;
       width: 80%;
       border: 3px solid transparent;         
       display: flex;
       justify-content: center;
       align-items: center;      
-      padding: 15px 0;
+      padding: 20px 0;
       background: #a9cbb7;
       box-shadow: 0 4px rgba(0, 0, 0, 0.2);
       position: relative;      
       text-align: center;
       transition: 0.5s;
       margin-bottom: 10px;
+      border-radius: 5px;
     }
     & input {
       margin-right: 15px;
@@ -92,7 +90,8 @@ const Container = styled.form`
       display: none;
       
     }
-    & label:hover {     
+    & label:hover {  
+      cursor: pointer;   
       /* border-color: black; */
     }
 

@@ -85,6 +85,7 @@ class Main extends React.Component {
 }
 
 const Body = styled.main`
+  flex: 1;
   background: #f1f1f1;  
   padding: 15px 0;
 `;
